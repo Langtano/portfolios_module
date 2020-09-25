@@ -40,7 +40,7 @@
           <h3 style="font-weight: 600;">
             {{ portfolio.info.startdate.strftime('%Y/%m/%d') }}
               - 
-            {{ portfolio.info.cutoffdate.strftime('%Y/%m/%d') }}
+            {{ portfolio.info.enddate.strftime('%Y/%m/%d') }}
           </h3>
         </div>
         <div>
@@ -86,7 +86,7 @@
               <th>Fecha de corte</th>
               <th>Réditos</th>
               <th>ISR</th>
-              <th>Réditos acomulados</th>
+              <th>Réditos acumulados</th>
             </tr>
             {% for row in portfolio.table.iterrows() %}
               <tr>
@@ -94,7 +94,7 @@
                   {{ row[1]['Cut off Date'] }}
                 </td>
                 <td>{{ row[1]['Revenues'] | round(2) }}</td>
-                <td>{{ row[1]['ISR'] | round(2)}}</td>
+                <td>{{ row[1]['ISR'] | round(2) }}</td>
                 <td>{{ row[1]['Accumulated Revenues'] | round(2) }}</td>
               </tr>
             {% endfor %}

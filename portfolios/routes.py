@@ -2,8 +2,8 @@ from flask import request, render_template
 from portfolios import app, db
 from portfolios.forms import NewPortfolioForm
 from portfolios.models import Portfolios
-from portfolio_calc.portfolios import (
-    StarterPortfolio, StandardPortfolio, FlexiblePortfolio
+from financialInstruments.instruments import (
+    StarterPortfolio, ClassicPortfolio, FlexiblePortfolio
 )
 
 @app.route('/nuevo-portafolio/', methods=['GET', 'POST'])
@@ -37,7 +37,7 @@ def portfolio_demo():
             )
 
         elif p.portfolio_type == 'classic':
-            port = StandardPortfolio(
+            port = ClassicPortfolio(
                 category='fixed', startdate=p.start_date.date(),
                 enddate=p.end_date.date(), amount=p.amount,
                 dynamic=p.pay_method == 'dynamic', period='month'
