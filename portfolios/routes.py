@@ -1,4 +1,4 @@
-from flask import request, render_template
+from flask import request, render_template, flash
 from portfolios import app, db
 from portfolios.forms import NewPortfolioForm
 from portfolios.models import Portfolios
@@ -21,6 +21,8 @@ def new_portfolio():
         )
         db.session.add(portfolio)
         db.session.commit()
+        
+        flash("Nuevo portafolio creado", "info")
 
     return render_template('portafolios_form.html', form=form)
 
